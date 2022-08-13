@@ -2,8 +2,8 @@ dataset_params:
   # Path to data, data are stored in folders with frames.
   #root_dir: data/taichi-png
   root_dir: data/taichi-png/
-  data_list: ./train_list_taichi.txt
-  data_list_test: ./test_list_taichi.txt
+  data_list: data/train_list_taichi.txt
+  data_list_test: data/test_list_taichi.txt
   # Image shape, needed for staked .png format.
   frame_shape: [256, 256, 3]
   # In case of TaiChi single video can be splitted in many chunks, or the maybe several videos for single person.
@@ -30,6 +30,7 @@ model_params:
     num_channels: 3
     # Using first or zero order model
     estimate_jacobian: True
+    use_bg_predictor: True
   bg_predictor_params:
     block_expansion: 32
     max_features: 1024

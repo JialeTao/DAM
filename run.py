@@ -44,7 +44,6 @@ if __name__ == "__main__":
     parser.add_argument("--device_ids", default="0", type=lambda x: list(map(int, x.split(','))),
                         help="Names of the devices comma separated.")
     parser.add_argument("--verbose", dest="verbose", action="store_true", help="Print model architecture")
-    parser.add_argument("--bg_predictor", default=None, help="if use bg_predictor")
     parser.add_argument("--local_rank", default=-1, type=int, help="distributed machine")
     parser.set_defaults(verbose=False)
 
@@ -102,7 +101,7 @@ if __name__ == "__main__":
     if opt.verbose:
         print(kp_detector)
 
-    if opt.bg_predictor is not None:
+    if config['model_params']['common_params']['use_bg_predictor']:
         bg_predictor = BGMotionPredictor(num_channels=config['model_params']['common_params']['num_channels'],
                                         **config['model_params']['bg_predictor_params'])
         if torch.cuda.is_available():
