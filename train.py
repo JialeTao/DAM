@@ -66,7 +66,7 @@ def train(config, generator, discriminator, kp_detector, checkpoint, log_dir, da
                 state_dict['jacobian.bias'] = jacobian_bias_new
             # load first-order-root model for second-order-root model
             kp_detector.load_state_dict(state_dict, strict=False)
-            generator.load_state_dict(checkpoint['generator'])
+        generator.load_state_dict(checkpoint['generator'])
     else:
         start_epoch = 0  
 
@@ -108,8 +108,8 @@ def train(config, generator, discriminator, kp_detector, checkpoint, log_dir, da
                                                                            output_device=torch.cuda.current_device())
         else:
             dataloader = DataLoader(dataset, batch_size=train_params['batch_size'], shuffle=True, num_workers=6, drop_last=True)
-            generator_full = DataParallelWithCallback(generator_full, device_ids=device_ids)
-            discriminator_full = DataParallelWithCallback(discriminator_full, device_ids=device_ids)
+            generator_full = nn.DataParallelWithCallback(generator_full, device_ids=device_ids)
+            discriminator_full = nn.DataParallelWithCallback(discriminator_full, device_ids=device_ids)
 
     with Logger(log_dir=log_dir, visualizer_params=config['visualizer_params'], checkpoint_freq=train_params['checkpoint_freq']) as logger:
         for epoch in trange(start_epoch, train_params['num_epochs']):

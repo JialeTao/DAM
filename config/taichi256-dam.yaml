@@ -176,9 +176,6 @@ train_params:
     complete_sub_leaf_attention: 10
     sub_leaf_attention_value: 0.2
 
-  stage2:
-    is_stage2: False
-
 # Parameters of reconstruction
 reconstruction_params:
   # Maximum number of videos for reconstruction
