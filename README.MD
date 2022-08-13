@@ -7,7 +7,7 @@ The model are trained with 4 Tesla V100 cards, pytorch with vesion 1.6 and 1.8 a
     pip install -r requirements.txt
 
 ## **Datasets**
-**TaiChiHD**,**Voxceleb1**,**FashionVideo**,**MGIF**, all following [FOMM](https://github.com/AliaksandrSiarohin/first-order-model).
+**TaiChiHD**,**Voxceleb1**,**FashionVideo**,**MGIF**, all following [FOMM](https://github.com/AliaksandrSiarohin/first-order-model). The dataset should be stored in the data folder. Note that we save the video dataset with png frames format (for example, “data/taichi-png/train/video-id/frames-id.png"), for better training IO performance. All train and test video frames are specified in txt files in the data folder.
 
 ## **Training**
 We train the hdam model in two stages. Firstly we train dam, and detect the abnormal keypoints, the indexex of detected abnormal keypoints are written to the hdam config via the "ignore_kp_list" parameter. We then train hdam model with initialization of dam.
