@@ -23,7 +23,7 @@ from modules.bg_motion_predictor import BGMotionPredictor
 
 
 from train import train
-from reconstruction_pai import reconstruction
+from reconstruction import reconstruction
 from animate import animate
 from visualization import visualization
 
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     distributed = opt.local_rank >= 0
     if distributed:
         # os.environ["NCCL_BLOCKING_WAIT"] = "1"
-        os.environ["NCCL_ASYNC_ERROR_HANDLING"] = "1"
+        # os.environ["NCCL_ASYNC_ERROR_HANDLING"] = "1"
         torch.distributed.init_process_group(backend="nccl", init_method="env://", timeout=datetime.timedelta(0, 18000))
 
         rank = torch.distributed.get_rank()
