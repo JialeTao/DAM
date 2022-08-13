@@ -1,0 +1,12 @@
+scikit-image
+scikit-learn
+scipy
+pandas
+imageio
+imageio-ffmpeg
+pillow==8.2.0
+matplotlib
+pyyaml
+timm
+dataclasses
+torch==1.6.0
