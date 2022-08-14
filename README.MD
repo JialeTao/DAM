@@ -44,6 +44,7 @@ Coming soon
     pages={3637--3646},
     year={2022}
     }
+    
     @inproceedings{xu2021move,
     title={Move As You Like: Image Animation in E-Commerce Scenario},
     author={Xu, Borun and Wang, Biao and Tao, Jiale and Ge, Tiezheng and Jiang, Yuning and Li, Wen and Duan, Lixin},
