@@ -1,0 +1,130 @@
+dataset_params:
+  root_dir: data/moving-gif-png/
+  data_list: ./train_list_mgif.txt
+  data_list_test: ./test_list_mgif.txt
+  frame_shape: [256, 256, 3]
+  id_sampling: False
+  augmentation_params:
+    flip_param:
+      horizontal_flip: True
+      time_flip: True
+    crop_param:
+      size: [256, 256]
+    resize_param:
+      ratio: [0.9, 1.1]
+    jitter_param:
+      hue: 0.5
+
+model_params:
+  use_bg_predictor: False
+  common_params:
+    num_kp: 15
+    num_channels: 3
+    estimate_jacobian: True
+  kp_detector_params:
+     temperature: 0.1
+     block_expansion: 32
+     max_features: 1024
+     scale_factor: 0.25
+     num_blocks: 5
+     single_jacobian_map: True
+
+    # attention block of sub_root feature to all leaf feature 
+     subroot_leaf_attention: True
+     attention_scale: 1
+     attention_channel: 64
+     detach_feature: False
+     ignore_kp_list: []
+
+  generator_params:
+    num_root_kp: 5
+    num_root_kp_orders: [2]
+    sub_kp_num: []
+    root_motion_kp_distance: True
+    root_motion: False
+    block_expansion: 64
+    max_features: 512
+    num_down_blocks: 2
+    num_bottleneck_blocks: 6
+    estimate_occlusion_map: True
+    skips: False
+    dense_motion_params:
+      block_expansion: 64
+      max_features: 1024
+      num_blocks: 5
+      scale_factor: 0.25
+  discriminator_params:
+    scales: [1]
+    block_expansion: 32
+    max_features: 512
+    num_blocks: 4
+    sn: True
+
+train_params:
+  num_epochs: 100
+  num_repeats: 25
+  epoch_milestones: [60, 90]
+  lr_generator: 2.0e-4
+  lr_discriminator: 2.0e-4
+  lr_kp_detector: 2.0e-4
+ 
+  batch_size: 48
+  scales: [1, 0.5, 0.25, 0.125]
+  use_prior_kp: False
+  prior_kp_list: []
+
+  clip_generator_grad: False
+  clip_kp_detector_grad: True
+  clip: 1
+
+  checkpoint_freq: 100
+  transform_params:
+    sigma_affine: 0.05
+    sigma_tps: 0.005
+    points_tps: 5
+  transform_params_aug:
+    # Sigma for affine part
+    sigma_affine: 0.05
+    ## Sigma for deformation part
+    #sigma_tps: 0.005
+    ## Number of point in the deformation grid
+    #points_tps: 5
+  loss_weights:
+    generator_gan: 1
+    discriminator_gan: 1
+    feature_matching: [10, 10, 10, 10]
+    perceptual: [10, 10, 10, 10, 10]
+    equivariance_value: 10
+    equivariance_jacobian: 10
+    perceptual_aug: [10, 10, 10, 10, 10]
+    use_bg_params: True
+    root_motion_kp_distance: 0
+    root_motion_sub_root_distance: 1
+    sub_root_motion_kp_distance: 10
+    reconstruction: 0
+    # sub_root to all leaf attention
+    orthognal_type: L1
+    orthognal_sub_leaf: 10
+    complete_sub_leaf_attention: 20
+    sub_leaf_attention_value: 0.33
+
+reconstruction_params:
+  num_videos: 1000
+  format: '.mp4'
+
+animate_params:
+  num_pairs: 50
+  format: '.mp4'
+  normalization_params:
+    adapt_movement_scale: False
+    use_relative_movement: False
+    use_relative_jacobian: False
+
+visualizer_params:
+  num_root_kp: 5
+  num_kp: 15
+  kp_size: 5
+  ignore_kp_list: []
+  draw_border: True
+  draw_line: True
+  colormap: 'gist_rainbow'

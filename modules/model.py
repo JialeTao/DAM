@@ -140,6 +140,7 @@ class GeneratorFullModel(torch.nn.Module):
         self.discriminator = discriminator
         self.train_params = train_params
         self.scales = train_params['scales']
+        # specify the relation of anchors, instead of learning the attention
         self.use_prior_kp = train_params['use_prior_kp']
         self.prior_kp_list = train_params['prior_kp_list']
 

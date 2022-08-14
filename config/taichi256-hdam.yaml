@@ -50,7 +50,7 @@ model_params:
      scale_factor: 0.25
      single_jacobian_map: False
 
-    # attention block of root anchor feature to motion anchor feature
+    # attention block of root anchor feature to motion anchor feature, activated by hdam
      subroot_leaf_attention: True
      attention_scale: 1
      attention_channel: 64
@@ -117,7 +117,7 @@ train_params:
   lr_discriminator: 2.0e-4
   lr_kp_detector: 2.0e-4
   lr_bg_predictor: 2.0e-4
-  batch_size: 64
+  batch_size: 48
 
   clip_generator_grad: False
   # clip the gradient of keypoint detector

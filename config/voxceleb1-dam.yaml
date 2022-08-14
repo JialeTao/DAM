@@ -1,9 +1,9 @@
 dataset_params:
   # Path to data, data are stored in folders with frames.
   #root_dir: data/taichi-png
-  root_dir: data/taichi-png/
-  data_list: data/train_list_taichi.txt
-  data_list_test: data/test_list_taichi.txt
+  root_dir: data/voxceleb1-png/
+  data_list: data/train_list_voxceleb1.txt
+  data_list_test: data/test_list_voxceleb1.txt
   # Image shape, needed for staked .png format.
   frame_shape: [256, 256, 3]
   # In case of TaiChi single video can be splitted in many chunks, or the maybe several videos for single person.
@@ -23,7 +23,7 @@ dataset_params:
 
 # Defines model architecture
 model_params:
-  use_bg_predictor: True
+  use_bg_predictor: False
   common_params:
     # Number of keypoint
     num_kp: 11
@@ -31,11 +31,6 @@ model_params:
     num_channels: 3
     # Using first or zero order model
     estimate_jacobian: True
-  bg_predictor_params:
-    block_expansion: 32
-    max_features: 1024
-    num_blocks: 5
-    bg_type: 'affine'
   kp_detector_params:
      # Softmax temperature for keypoint heatmaps
      temperature: 0.1
@@ -48,7 +43,7 @@ model_params:
      # Keypioint is predicted on smaller images for better performance,
      # scale_factor=0.25 means that 256x256 image will be resized to 64x64
      scale_factor: 0.25
-     single_jacobian_map: False
+     single_jacobian_map: True
 
     # attention block of root anchor feature to motion anchor feature, activated by hdam
      subroot_leaf_attention: False
@@ -91,7 +86,6 @@ model_params:
       # Dense motion is predicted on smaller images for better performance,
       # scale_factor=0.25 means that 256x256 image will be resized to 64x64
       scale_factor: 0.25
-      set_static_bg: False
   discriminator_params:
     # Discriminator can be multiscale, if you want 2 discriminator on original
     # resolution and half of the original, specify scales: [1, 0.5]
@@ -109,7 +103,7 @@ train_params:
   num_epochs: 100
   # For better i/o performance when number of videos is small number of epochs can be multiplied by this number.
   # Thus effectivlly with num_repeats=100 each epoch is 100 times larger. 
-  num_repeats: 150
+  num_repeats: 75
   # Drop learning rate by 10 times after this epochs 
   epoch_milestones: [60, 90]
   # Initial learing rate for all modules
