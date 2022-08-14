@@ -25,8 +25,8 @@ To make a demo animation, specify the driving video and source image, the result
 
     python demo.py --mode demo --config path/to/config --checkpoint path/to/model.pth --driving_video path/to/video.mp4 --source_image path/to/image.png --result_video path/to/result.mp4 --adapt_scale
 
-### E-commerce demo
-We make some applications in e-commerce senario, which can be seen in the demo paper [Move as You Like](https://arxiv.org/pdf/2112.13647.pdf)
+### E-commerce animation demo
+We've made some applications in the e-commerce senario, which can be seen in the demo paper [Move as You Like](https://arxiv.org/pdf/2112.13647.pdf).
 ![video](demo/babe.gif) 
 
 ![video](demo/horse.gif)
