@@ -2,7 +2,7 @@
 Codes for CVPR 2022 paper Structure-Aware Motion Transfer with Deformable Anchor Model.
 
 ## **Environments**
-The model are trained with 4 Tesla V100 cards, pytorch vesion 1.6 and 1.8 with python 3.6 are tested fine. Basic installations are given in requiremetns.txt.
+The model are trained on 4 Tesla V100 cards, pytorch vesion 1.6 and 1.8 with python 3.6 are tested fine. Basic installations are given in requiremetns.txt.
 
     pip install -r requirements.txt
 
