@@ -1,12 +1,3 @@
-scikit-image
-scikit-learn
-scipy
-pandas
-imageio
-imageio-ffmpeg
-pillow==8.2.0
-matplotlib
-pyyaml
-timm
-dataclasses
-torch==1.6.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:00026848f6628b1d8f4371c981c2919554ab5523013ea089f3d0e02d46612080
+size 129

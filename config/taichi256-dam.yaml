@@ -23,6 +23,7 @@ dataset_params:
 
 # Defines model architecture
 model_params:
+  use_bg_predictor: True
   common_params:
     # Number of keypoint
     num_kp: 11
@@ -30,7 +31,6 @@ model_params:
     num_channels: 3
     # Using first or zero order model
     estimate_jacobian: True
-    use_bg_predictor: True
   bg_predictor_params:
     block_expansion: 32
     max_features: 1024

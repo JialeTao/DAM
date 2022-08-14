@@ -101,7 +101,7 @@ if __name__ == "__main__":
     if opt.verbose:
         print(kp_detector)
 
-    if config['model_params']['common_params']['use_bg_predictor']:
+    if config['model_params']['use_bg_predictor']:
         bg_predictor = BGMotionPredictor(num_channels=config['model_params']['common_params']['num_channels'],
                                         **config['model_params']['bg_predictor_params'])
         if torch.cuda.is_available():
