@@ -1,6 +1,7 @@
 dataset_params:
   # Path to data, data are stored in folders with frames.
-  #root_dir: data/taichi-png
+  # root_dir: data/taichi-png
+  ## ** make sure the dir ends with '/', "data/taichi-png" is not correct. **
   root_dir: data/taichi-png/
   data_list: data/train_list_taichi.txt
   data_list_test: data/test_list_taichi.txt
