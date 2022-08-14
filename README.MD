@@ -23,7 +23,19 @@ Evaluate video reconstruction with following command, for more metrics, we recom
 ## **Demo**
 To make a demo animation, specify the driving video and source image, the result video will be saved to result.mp4.
 
-    python demo.py --mode demo --config path/to/config --checkpoint path/to/model.pth --driving_video path/to/video.mp4 --source_image path/to/image.png --result_video path/to/result.mp4 --adapt_scale 
+    python demo.py --mode demo --config path/to/config --checkpoint path/to/model.pth --driving_video path/to/video.mp4 --source_image path/to/image.png --result_video path/to/result.mp4 --adapt_scale
+
+### E-commerce demo
+We make some applications in e-commerce senario, which can be seen in the demo paper [Move as You Like](https://arxiv.org/pdf/2112.13647.pdf)
+![video](demo/babe1.gif)
+
+![video](demo/babe2.gif)
+
+![video](demo/horse1.gif)
+
+![video](demo/horse2.gif)
+
+
 
 ## **Pretrained models**
 Coming soon
@@ -35,6 +47,13 @@ Coming soon
     booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
     pages={3637--3646},
     year={2022}
+    }
+    @inproceedings{xu2021move,
+    title={Move As You Like: Image Animation in E-Commerce Scenario},
+    author={Xu, Borun and Wang, Biao and Tao, Jiale and Ge, Tiezheng and Jiang, Yuning and Li, Wen and Duan, Lixin},
+    booktitle={Proceedings of the 29th ACM International Conference on Multimedia},
+    pages={2759--2761},
+    year={2021}
     }
 
 ## **Acknowledgements**
