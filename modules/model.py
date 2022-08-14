@@ -237,20 +237,6 @@ class GeneratorFullModel(torch.nn.Module):
             driving_aug = transform.transform_frame(x['driving'][:,0:3,:,:])
             kp_driving_aug = self.kp_extractor(driving_aug)
 
-            if self.loss_weights['perceptual_aug_no_generator_grad']:
-                for name, param in self.generator.named_parameters():
-                    if self.loss_weights['perceptual_aug_no_dense_motion_grad']:
-                        param.requires_grad=False
-                    else:
-                        if not 'dense_motion' in name:
-                            param.requires_grad=False
-            if self.loss_weights['perceptual_aug_no_dense_motion_grad']:
-                for name, param in self.generator.named_parameters():
-                    if 'dense_motion' in name:
-                        param.requires_grad=False
-            if self.loss_weights['perceptual_aug_no_bg_predictor_grad']:
-                for param in self.bg_predictor.parameters():
-                    param.requires_grad=False
             if self.bg_predictor is not None and self.loss_weights['use_bg_params']:
                 bg_params = self.bg_predictor(x['source'], driving_aug)
             else:
@@ -262,14 +248,7 @@ class GeneratorFullModel(torch.nn.Module):
                 kp_driving_aug_for_motion['jacobian'] = kp_driving_aug['jacobian'][:,0:num_kp-num_root_kp,:,:]
                 generated_aug = self.generator(x['source'], kp_source=kp_source_for_motion, kp_driving=kp_driving_aug_for_motion, driving_image=driving_aug, bg_params=bg_params)
             else:
-                generated_aug = self.generator(x['source'], kp_source=kp_source, kp_driving=kp_driving_aug, driving_image=driving_aug,kp_driving_next=kp_driving_next, bg_params=bg_params)
-
-            if self.loss_weights['perceptual_aug_no_generator_grad'] or self.loss_weights['perceptual_aug_no_dense_motion_grad']:
-                for param in self.generator.parameters():
-                    param.requires_grad=True
-            if self.loss_weights['perceptual_aug_no_bg_predictor_grad']:
-                for param in self.generator.parameters():
-                    param.requires_grad=True
+                generated_aug = self.generator(x['source'], kp_source=kp_source, kp_driving=kp_driving_aug, driving_image=driving_aug, bg_params=bg_params)
 
             if sum(self.loss_weights['perceptual_aug']) != 0:
                 # generated_aug.update({'kp_source': kp_source, 'kp_driving': kp_driving})

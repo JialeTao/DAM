@@ -87,7 +87,7 @@ class OcclusionAwareGenerator(nn.Module):
             out = input_previous if input_previous is not None else input_skip
         return out
 
-    def forward(self, source_image, kp_driving, kp_source, driving_image=None,kp_driving_next=None, bg_params=None):
+    def forward(self, source_image, kp_driving, kp_source, driving_image=None, bg_params=None):
         # Encoding (downsampling) part
         out = self.first(source_image)
         skips = [out]
