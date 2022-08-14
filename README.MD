@@ -7,10 +7,10 @@ The model are trained on 4 Tesla V100 cards, pytorch vesion 1.6 and 1.8 with pyt
     pip install -r requirements.txt
 
 ## **Datasets**
-**TaiChiHD**,**Voxceleb1**,**FashionVideo**,**MGIF**, all following [FOMM](https://github.com/AliaksandrSiarohin/first-order-model). After downloading and pre-processing, the dataset should be placed in the data folder or you can change the parameter "root_dir" in the yaml config file. Note that we save the video dataset with png frames format (for example, “data/taichi-png/train/video-id/frames-id.png"), for better training IO performance. All train and test video frames are specified in txt files in the data folder.
+**TaiChiHD**,**Voxceleb1**,**FashionVideo**,**MGIF**, all following [FOMM](https://github.com/AliaksandrSiarohin/first-order-model). After downloading and pre-processing, the dataset should be placed in the `./data` folder or you can change the parameter `root_dir` in the yaml config file. Note that we save the video dataset with png frames format (for example,`./data/taichi-png/train/video-id/frames-id.png`), for better training IO performance. All train and test video frames are specified in txt files in the `./data` folder.
 
 ## **Training**
-We train the hdam model in two stages. Firstly we train dam, and detect the abnormal keypoints, the indexes of detected abnormal keypoints are written to the hdam config via the "ignore_kp_list" parameter. We then train hdam model with initialization of dam.
+We train the hdam model in two stages. Firstly we train dam, and detect the abnormal keypoints, the indexes of detected abnormal keypoints are written to the hdam config via the `ignore_kp_list` parameter. We then train hdam model with initialization of dam.
 
     CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 run.py --config config/dataset-dam.yaml
     CUDA_VISIBLE_DEVICES=0 python equivariance_detection.py --config config/dataset-dam.yaml --config_hdam config/dataset-hdam.yaml --checkpoint path/to/dam/model.pth
