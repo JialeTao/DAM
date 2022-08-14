@@ -27,9 +27,9 @@ To make a demo animation, specify the driving video and source image, the result
 
 ### E-commerce demo
 We make some applications in e-commerce senario, which can be seen in the demo paper [Move as You Like](https://arxiv.org/pdf/2112.13647.pdf)
-![video](demo/babe1.gif) ![video](demo/babe2.gif)
+![video](demo/babe.gif) 
 
-![video](demo/horse1.gif) ![video](demo/horse2.gif)
+![video](demo/horse.gif)
 
 
 
