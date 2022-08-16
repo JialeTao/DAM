@@ -133,12 +133,11 @@ class FramesDataset(Dataset):
             test_videos[instance_id].append(img_name)
         f_test.close()
 
-        data_dir_name = self.root_dir.split('/')[-2]
         if is_train:
-            local_dir_name = os.path.join('data', data_dir_name, 'train')
+            local_dir_name = os.path.join(self.root_dir, 'train')
             self.root_dir = local_dir_name
         else:
-            local_dir_name = os.path.join('data', data_dir_name, 'test')
+            local_dir_name = os.path.join(self.root_dir, 'test')
             # print(local_dir_name)
             # print(os.path.join(self.root_dir+'test/', test_video_ids[0], test_videos[test_video_ids[0]][0]))
             self.root_dir = local_dir_name
