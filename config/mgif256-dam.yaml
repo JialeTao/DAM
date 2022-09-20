@@ -1,7 +1,7 @@
 dataset_params:
   root_dir: data/moving-gif-png/
-  data_list: ./train_list_mgif.txt
-  data_list_test: ./test_list_mgif.txt
+  data_list: data/train_list_mgif.txt
+  data_list_test: data/test_list_mgif.txt
   frame_shape: [256, 256, 3]
   id_sampling: False
   augmentation_params:
