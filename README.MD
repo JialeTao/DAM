@@ -32,10 +32,6 @@ We've made some applications in the e-commerce senario, which can be seen in the
 ![video](demo/horse.gif)
 
 
-
-## **Pretrained models**
-Coming soon
-
 ## **Citation**
     @inproceedings{tao2022structure,
     title={Structure-Aware Motion Transfer with Deformable Anchor Model},
