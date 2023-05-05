@@ -25,7 +25,7 @@ from modules.bg_motion_predictor import BGMotionPredictor
 from train import train
 from reconstruction import reconstruction
 from animate import animate
-from visualization import visualization
+#from visualization import visualization
 
 import datetime
 import time
